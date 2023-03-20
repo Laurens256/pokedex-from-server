@@ -1,11 +1,12 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
 import path from 'path';
 import { engine } from 'express-handlebars';
 import hbsHelpers from './utils/handlebars/globalHelpers';
 import pokemonHelpers from './utils/handlebars/pokemonHelpers';
+import { setHeaderFooter } from './middleware/setHeaderFooter';
 
-import * as dotenv from 'dotenv'
-dotenv.config()
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.engine(
 		partialsDir: `${path.join(__dirname)}/views/partials`,
 		defaultLayout: 'main',
 		extname: '.hbs',
-		helpers: {...hbsHelpers, ...pokemonHelpers},
+		helpers: { ...hbsHelpers, ...pokemonHelpers }
 	})
 );
 app.set('view engine', 'hbs');
@@ -27,13 +28,12 @@ app.set('views', './views');
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // routes
-app.use('/', require('./routes/splash'));
-app.use('/filters', require('./routes/filters'));
-app.use('/pokemon', require('./routes/pokemonList'));
-app.use('/pokemon/:name', require('./routes/pokemonDetails'));
-
-
+app.use('/filters', setHeaderFooter, require('./routes/filters'));
+app.use('/pokemon/:name', setHeaderFooter, require('./routes/pokemonDetails'));
+app.use('/pokemon', setHeaderFooter, require('./routes/pokemonList'));
+app.use('/', setHeaderFooter, require('./routes/splash'));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

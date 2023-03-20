@@ -1,5 +1,4 @@
 import express from 'express';
-import { generateHeaderFooter } from '../utils/footerHeader';
 
 const router = express.Router();
 
@@ -24,11 +23,9 @@ const filters = [
 ];
 
 router.get('/', async (req, res) => {
-	const { header, footer } = generateHeaderFooter(req.baseUrl);
 	res.render('filters', {
+		...res.locals,
 		css: ['filters', '/components/select-item'],
-		headings: header,
-		footerControls: footer,
 		sortOrders: sortOrders,
 		filters: filters
 	});
