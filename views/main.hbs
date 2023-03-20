@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang='en'>
 	<head>
 		<meta charset='UTF-8' />
@@ -14,10 +15,17 @@
 		{{#each js}}
 			<script src='/scripts/{{this}}.js' defer></script>
 		{{/each}}
+
+		{{#if (or this.headings this.footerControls)}}
+			<link rel='stylesheet' href='/styles/partials/header-footer.css' />
+		{{/if}}
+
 	</head>
 	<body>
 
-		{{{body}}}
+	{{> header}}
+	{{{body}}}
+	{{> footer}}
 
 	</body>
 </html>

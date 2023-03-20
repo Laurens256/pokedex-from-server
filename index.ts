@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import { engine } from 'express-handlebars';
-import hbsHelpers from './utils/hbsHelpers';
+import hbsHelpers from './utils/handlebars/hbsHelpers';
 
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -17,7 +17,7 @@ app.engine(
 		partialsDir: `${path.join(__dirname)}/views/partials`,
 		defaultLayout: 'main',
 		extname: '.hbs',
-		helpers: hbsHelpers
+		helpers: hbsHelpers,
 	})
 );
 app.set('view engine', 'hbs');

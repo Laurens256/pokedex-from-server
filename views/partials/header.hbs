@@ -1,0 +1,15 @@
+{{#if this.headings}}
+	<header>
+		<ul>
+			{{#each this.headings}}
+				<li>
+					{{#if @first}}
+						<h1>{{this}}</h1>
+					{{else}}
+						<h2>{{this}}</h2>
+					{{/if}}
+				</li>
+			{{/each}}
+		</ul>
+	</header>
+{{/if}}

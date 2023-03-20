@@ -16,13 +16,20 @@ const filters = [
 	{ name: 'mountain', class: 'mountain' },
 	{ name: 'cave', class: 'cave' },
 	{ name: 'sea', class: 'sea' },
-	{ name: 'water\'s edge', class: 'waters-edge' },
+	{ name: "water's edge", class: 'waters-edge' },
 	{ name: 'forest', class: 'forest' },
-	{ name: 'grassland', class: 'grassland' },
+	{ name: 'grassland', class: 'grassland' }
 ];
 
+const headings = ['POKéDEX', 'TABLE OF CONTENTS'];
+
 router.get('/', async (req, res) => {
-	res.render('filters', { css: ['filters'], sortOrders, filters });
+	res.render('filters', {
+		css: ['filters'],
+		headings: headings,
+		sortOrders: sortOrders,
+		filters: filters
+	});
 });
 
 module.exports = router;
