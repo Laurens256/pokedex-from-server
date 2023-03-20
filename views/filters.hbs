@@ -1,0 +1,33 @@
+<div class='filters'>
+	<ul class='select-list'>
+
+		<li><h2>POKéMON LIST</h2></li>
+		<li><a
+				href='/pokemon?order={{sortOrders.0.class}}'
+				aria-label='sort by {{sortOrders.0.class}}'
+			>{{toUpperCase sortOrders.0.name}} MODE</a></li>
+
+		<li><h2>POKéMON HABITATS</h2></li>
+		{{#each filters}}
+			<li><a class="habitat"
+					href='/pokemon?habitat={{this.class}}'
+					aria-label='filter by {{this.name}} habitat'
+				>{{this.name}} {{pokemonStr}}</a></li>
+		{{/each}}
+
+		<li><h2>SEARCH</h2></li>
+		{{#each sortOrders}}
+			{{#unless @first}}
+				<li><a class="sort"
+						href='/pokemon?order={{this.class}}'
+						aria-label='sort by {{this.name}}'
+					>{{toUpperCase this.name}} MODE</a></li>
+			{{/unless}}
+		{{/each}}
+
+		<li><h2>OTHER</h2></li>
+		<li><a class='close' aria-label='close pokedex'>CLOSE POKéDEX</a></li>
+		</ul>
+		{{!-- <li><button class='close' aria-label='close pokedex'>CLOSE POKéDEX</button></li></ul> --}}
+
+</div>
