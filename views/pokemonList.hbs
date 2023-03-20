@@ -1,0 +1,28 @@
+<ol class='pokemonlist select-list'>
+	{{#each pokemon}}
+		<li>
+			<a
+				href='/pokemon/{{this.name}}'
+				aria-label='view details of {{this.name}}'
+				data-id='{{this.id}}'
+			>
+				<section>
+					<p>{{pokemonId this.id}}</p>
+				</section>
+
+				<section>
+					<h2>{{this.name}}</h2>
+				</section>
+
+				<section>
+					{{#each this.types}}
+						<div
+							class='typebadge {{this.type.name}}'
+							data-type-visual='{{pokemonType this.type.name}}'
+						></div>
+					{{/each}}
+				</section>
+			</a>
+		</li>
+	{{/each}}
+</ol>

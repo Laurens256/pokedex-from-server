@@ -1,4 +1,6 @@
 import express from 'express';
+import { generateHeaderFooter } from '../utils/footerHeader';
+
 const router = express.Router();
 
 const sortOrders = [
@@ -21,12 +23,13 @@ const filters = [
 	{ name: 'grassland', class: 'grassland' }
 ];
 
-const headings = ['POKéDEX', 'TABLE OF CONTENTS'];
-
 router.get('/', async (req, res) => {
+	const { header, footer } = generateHeaderFooter(req.baseUrl);
+	console.log(header, footer);
 	res.render('filters', {
 		css: ['filters'],
-		headings: headings,
+		headings: header,
+		footerControls: footer,
 		sortOrders: sortOrders,
 		filters: filters
 	});

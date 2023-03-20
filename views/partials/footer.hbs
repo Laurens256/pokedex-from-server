@@ -1,7 +1,12 @@
 {{#if footerControls}}
 	<footer>
-		<ul><li class='control-icon d-pad vertical'>PICK</li><li
-				class='control-icon a-button'
-			>OK</li></ul>
+		<ul>
+			{{#each footerControls}}
+			{{!-- spreadClass: string[] => string string string --}}
+				<li class="{{spreadClasses this.classes}}">
+					{{this.text}}
+				</li>
+			{{/each}}
+		</ul>
 	</footer>
 {{/if}}

@@ -1,14 +1,15 @@
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import { engine } from 'express-handlebars';
-import hbsHelpers from './utils/handlebars/hbsHelpers';
+import hbsHelpers from './utils/handlebars/globalHelpers';
+import pokemonHelpers from './utils/handlebars/pokemonHelpers';
 
 import * as dotenv from 'dotenv'
 dotenv.config()
 
 const app = express();
 
-
+// handlebars stuff
 app.engine('handlebars', engine());
 app.engine(
 	'hbs',
@@ -17,22 +18,19 @@ app.engine(
 		partialsDir: `${path.join(__dirname)}/views/partials`,
 		defaultLayout: 'main',
 		extname: '.hbs',
-		helpers: hbsHelpers,
+		helpers: {...hbsHelpers, ...pokemonHelpers},
 	})
 );
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-// app.get('/', (req, res) => {
-// 	res.render('splash', { title: 'Home' });
-// });
-
+// static files
 app.use(express.static(path.join(__dirname, 'public')));
-// ================================
-// 				routes
-// ================================
+
+// routes
 app.use('/', require('./routes/splash'));
 app.use('/filters', require('./routes/filters'));
+app.use('/pokemon', require('./routes/pokemonList'));
 
 
 
