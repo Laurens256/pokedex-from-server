@@ -2,6 +2,9 @@ import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import { engine } from 'express-handlebars';
 
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 const app = express();
 
 app.engine('handlebars', engine());
@@ -17,8 +20,6 @@ app.engine(
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-const port = 3000;
-
 // app.get('/', (req, res) => {
 // 	res.render('splash', { title: 'Home' });
 // });
@@ -29,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ================================
 app.use('/', require('./routes/splash'));
 
+
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
 	console.log(`Server is running at http://localhost:${port}`);
 });
