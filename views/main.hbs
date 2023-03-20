@@ -9,6 +9,11 @@
 		{{#each css}}
 			<link rel='stylesheet' href='/styles/{{this}}.css' />
 		{{/each}}
+
+		{{!-- <script src='/scripts/main.js' defer></script> --}}
+		{{#each js}}
+			<script src='/scripts/{{this}}.js' defer></script>
+		{{/each}}
 	</head>
 	<body>
 
