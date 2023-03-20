@@ -19,9 +19,15 @@ app.set('views', './views');
 
 const port = 3000;
 
-app.get('/', (req, res) => {
-	res.render('splash', { title: 'Home' });
-});
+// app.get('/', (req, res) => {
+// 	res.render('splash', { title: 'Home' });
+// });
+
+app.use(express.static(path.join(__dirname, 'public')));
+// ================================
+// 				routes
+// ================================
+app.use('/', require('./routes/splash'));
 
 app.listen(port, () => {
 	console.log(`Server is running at http://localhost:${port}`);
