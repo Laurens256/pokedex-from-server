@@ -47,13 +47,14 @@
 }
 
 .filters > div {
+	--background-url: url(../img/pokedex-icons/numerical.png);
 	width: 100%;
 	max-width: 400px;
 	height: 100%;
 	image-rendering: pixelated;
 	place-self: end;
 
-	background-image: url(../img/pokedex-icons/numerical.png);
+	background-image: var(--background-url);
 	background-repeat: no-repeat;
 	background-position: bottom 2em right;
 	background-size: calc(100% - 4em) auto;
