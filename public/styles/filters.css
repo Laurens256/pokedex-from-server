@@ -46,11 +46,17 @@
 	text-transform: capitalize;
 }
 
-.filters img {
+.filters > div {
 	width: 100%;
 	max-width: 400px;
+	height: 100%;
+	image-rendering: pixelated;
 	place-self: end;
-	padding: 2em;
+
+	background-image: url(../img/pokedex-icons/numerical.png);
+	background-repeat: no-repeat;
+	background-position: bottom 2em right;
+	background-size: calc(100% - 4em) auto;
 }
 
 @media (max-width: 600px) {
@@ -79,7 +85,7 @@
 		font-size: 1.5rem;
 	}
 
-	.filters img {
+	.filters > div {
 		display: none;
 	}
 }
