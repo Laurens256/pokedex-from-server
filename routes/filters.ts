@@ -25,9 +25,8 @@ const filters = [
 
 router.get('/', async (req, res) => {
 	const { header, footer } = generateHeaderFooter(req.baseUrl);
-	console.log(header, footer);
 	res.render('filters', {
-		css: ['filters'],
+		css: ['filters', '/components/select-item'],
 		headings: header,
 		footerControls: footer,
 		sortOrders: sortOrders,

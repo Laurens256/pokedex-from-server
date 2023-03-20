@@ -9,8 +9,6 @@ router.get('/', async (req, res) => {
 	const pokemon = await getPokemonByRegion();
 	const { header, footer } = generateHeaderFooter(req.baseUrl);
 
-	console.log(pokemon);
-
 	res.render('pokemonList', {
 		css: ['pokemon-list', 'components/select-item', 'components/type-badges'],
 		headings: header,

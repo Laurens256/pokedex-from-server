@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/splash'));
 app.use('/filters', require('./routes/filters'));
 app.use('/pokemon', require('./routes/pokemonList'));
+app.use('/pokemon/:name', require('./routes/pokemonDetails'));
 
 
 

@@ -1,3 +1,7 @@
+.select-list li a {
+	width: 100%;
+}
+
 .select-list li:not(.loading) a:not(:disabled):hover::before,
 .select-list li:not(.loading) a:not(:disabled):focus::before {
 	content: '';
@@ -18,7 +22,7 @@
 }	
 
 .select-list a:focus {
-	outline: none;
+	outline: solid 2px transparent;
 }
 
 @media (max-width: 600px) {
