@@ -20,7 +20,8 @@ const generateHeaderFooter = (_view: string) => {
 const headers = {
 	filters: ['POKéDEX', 'TABLE OF CONTENTS'],
 	pokemon: ['POKéMON&nbsp;&nbsp;LIST'],
-	pokemonDetails: ['POKéMON&nbsp;&nbsp;DETAILS']
+	pokemonDetails: ['POKéMON&nbsp;&nbsp;DETAILS'],
+	error: ['404', 'PAGE NOT FOUND']
 };
 
 const footerControls = {
@@ -41,11 +42,11 @@ const footerControls = {
 			key: 'ArrowRight'
 		},
 		{ classes: ['control-icon', 'b-button'], text: 'CANCEL', key: 'b' }
+	],
+	error: [
+		{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' },
+		{ classes: ['control-icon', 'd-pad', 'horizontal'], text: 'PICK', key: 'ArrowRight' }
 	]
-	// errorview: [
-	// 	{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' },
-	// 	{ classes: ['control-icon', 'd-pad', 'horizontal'], text: 'PICK', key: 'ArrowRight' },
-	// ]
 };
 
 export { generateHeaderFooter };

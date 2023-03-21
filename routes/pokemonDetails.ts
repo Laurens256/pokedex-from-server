@@ -44,4 +44,5 @@ const chooseFlavorText = (flavorTextEntries: Species['flavor_text_entries']) => 
 	return randomEntry;
 };
 
-module.exports = router;
+
+export default router;

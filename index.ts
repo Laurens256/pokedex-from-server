@@ -4,6 +4,7 @@ import { engine } from 'express-handlebars';
 import hbsHelpers from './utils/handlebars/globalHelpers';
 import pokemonHelpers from './utils/handlebars/pokemonHelpers';
 import { setHeaderFooter } from './middleware/setHeaderFooter';
+import routes from './routes/routes';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -31,12 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // middleware for header and footer
 app.use(setHeaderFooter);
 
-
 // routes
-app.use('/filters', require('./routes/filters'));
-app.use('/pokemon/:name', require('./routes/pokemonDetails'));
-app.use('/pokemon', require('./routes/pokemonList'));
-app.use('/', require('./routes/splash'));
+routes.forEach((route) => {
+	app.use(route.path, route.view);
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

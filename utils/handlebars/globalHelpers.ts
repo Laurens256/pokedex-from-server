@@ -1,10 +1,14 @@
 export default {
 	toUpperCase: (str: string) => {
-		return str.toUpperCase();
+		if(str) {
+			return str.toUpperCase();
+		}
 	},
 
-	spreadClasses: (classes: string[]) => {
-		return classes.join(' ');
+	spreadAttributes: (attributes: string[]) => {
+		if(attributes) {
+			return attributes.join(' ');
+		}
 	},
 
 	eq: function() { return reduceOp(arguments, (a: any, b: any) => a === b); },
