@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 	res.render('filters', {
 		...res.locals,
 		css: ['filters', '/components/select-item'],
-		js: ['filters', 'generalList'],
+		js: ['filters'],
 		sortOrders: sortOrders,
 		filters: filters
 	});

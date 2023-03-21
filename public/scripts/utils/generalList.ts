@@ -1,3 +1,6 @@
+import { delay } from './delay.js';
+import { playBeepSound } from './sfx.js';
+
 const list: HTMLOListElement | HTMLUListElement = document.querySelector('.select-list')!;
 const listItems = Array.from(list.querySelectorAll('a'));
 let topBoundary = 0;
@@ -41,10 +44,9 @@ const moveArrow = async (direction: number) => {
 		const visibleItems = getVisibleItems();
 		visibleItems[Math.floor(visibleItems.length / 2)].focus();
 	}
-	// playBeepSound();
-	// followScroll();
+	playBeepSound();
 	
-	// await delay(90);
+	await delay(90);
 	isRunning = false;
 };
 
@@ -58,8 +60,6 @@ const followScroll = () => {
 	// magische nummers
 	const scrollMarginDown = visibleItems.length > 5 ? 3 : 1;
 	const scrollMarginUp = visibleItems.length > 5 ? 2 : 1;
-
-	console.log(focusedItemIndex);
 
 	if (focusedItemIndex >= visibleItems.length - scrollMarginDown || focusedItemIndex === -1) {
 		list.scrollTop += listItemHeight;
@@ -87,7 +87,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
 };
 
 
-const init = () => {
+const initList = () => {
 	listItems.forEach((listItem) => {
 		listItem.addEventListener('focus', followScroll);
 	});
@@ -95,6 +95,8 @@ const init = () => {
 	window.addEventListener('keydown', handleKeyDown);
 
 	calcBoundingRect();
+
+	listItems[0].focus();
 };
 
-init();
+export { initList };

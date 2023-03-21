@@ -1,3 +1,5 @@
+import { initList } from './utils/generalList.js';
+
 const links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll(
 	'.filters li a[data-img]'
 );
@@ -39,5 +41,5 @@ const changeSprite = (e: FocusEvent) => {
 	}
 };
 
-
+initList();
 initSideSprite();

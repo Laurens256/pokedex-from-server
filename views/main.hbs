@@ -14,7 +14,7 @@
 		{{/each}}
 
 		{{#each js}}
-			<script src='/scripts/dist/{{this}}.js' defer></script>
+			<script src='/scripts/dist/{{this}}.js' type="module"></script>
 		{{/each}}
 
 		{{#if (or this.headings this.footerControls)}}
