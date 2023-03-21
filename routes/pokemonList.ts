@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
 
 	res.render('pokemonList', {
 		...res.locals,
+		js: ['pokemonList'],
 		css: ['pokemon-list', 'components/select-item', 'components/type-badges'],
 		pokemon: pokemon,
 	});

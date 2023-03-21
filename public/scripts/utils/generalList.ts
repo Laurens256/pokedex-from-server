@@ -83,6 +83,31 @@ const handleKeyDown = (e: KeyboardEvent) => {
 	} else if (e.key === 'ArrowDown') {
 		e.preventDefault();
 		moveArrow(1);
+	} else if (e.key === 'a') {
+		e.preventDefault();
+		const focusedItem = document.activeElement as HTMLAnchorElement;
+		if (listItems.includes(focusedItem)) {
+			focusedItem.click();
+		}
+	}
+};
+
+const initialFocus = () => {
+	const focusIdentifier = sessionStorage.getItem('listFocus');
+	if (focusIdentifier) {
+		const focusItem: HTMLElement | null = document.querySelector(`[data-identifier="${focusIdentifier}"]`);
+		if (focusItem) {
+			focusItem.focus();
+		} else {
+			listItems[0].focus();
+		}
+	}
+};
+
+const saveFocus = () => {
+	const focusedItem = document.activeElement as HTMLAnchorElement;
+	if (listItems.includes(focusedItem) && focusedItem.dataset.identifier) {
+		sessionStorage.setItem('listFocus', focusedItem.dataset.identifier);
 	}
 };
 
@@ -90,13 +115,13 @@ const handleKeyDown = (e: KeyboardEvent) => {
 const initList = () => {
 	listItems.forEach((listItem) => {
 		listItem.addEventListener('focus', followScroll);
+		listItem.addEventListener('click', saveFocus);
 	});
 
 	window.addEventListener('keydown', handleKeyDown);
 
 	calcBoundingRect();
-
-	listItems[0].focus();
+	initialFocus();
 };
 
 export { initList };
