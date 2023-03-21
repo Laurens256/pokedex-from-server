@@ -1,24 +1,25 @@
 {
-  "name": "pokedex-from-server",
-  "version": "1.0.0",
-  "description": "![pwa](https://user-images.githubusercontent.com/3104648/28351989-7f68389e-6c4b-11e7-9bf2-e9fcd4977e7a.png)",
-  "main": "index.js",
-  "scripts": {
-    "devOld": "nodemon --exec ts-node index.ts",
-    "dev": "nodemon -e '*' --exec \"node --require ts-node/register --inspect index.ts\""
-  },
-  "author": "Laurens256",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^16.0.3"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@types/node": "^18.15.3",
-    "express": "^4.18.2",
-    "express-handlebars": "^7.0.2",
-    "nodemon": "^2.0.21",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.2"
-  }
+	"name": "pokedex-from-server",
+	"version": "1.0.0",
+	"description": "![pwa](https://user-images.githubusercontent.com/3104648/28351989-7f68389e-6c4b-11e7-9bf2-e9fcd4977e7a.png)",
+	"main": "index.js",
+	"scripts": {
+		"devOld": "nodemon --exec ts-node index.ts",
+		"devOold": "nodemon -e '*' --exec \"node --require ts-node/register --inspect index.ts\"",
+		"dev": "nodemon -e '*' --exec \"node --require ts-node/register --inspect index.ts\""
+	},
+	"author": "Laurens256",
+	"license": "MIT",
+	"dependencies": {
+		"dotenv": "^16.0.3"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.17",
+		"@types/node": "^18.15.3",
+		"express": "^4.18.2",
+		"express-handlebars": "^7.0.2",
+		"nodemon": "^2.0.21",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.0.2"
+	}
 }
