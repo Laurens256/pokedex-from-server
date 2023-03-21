@@ -28,12 +28,15 @@ app.set('views', './views');
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// middleware for header and footer
+app.use(setHeaderFooter);
+
 
 // routes
-app.use('/filters', setHeaderFooter, require('./routes/filters'));
-app.use('/pokemon/:name', setHeaderFooter, require('./routes/pokemonDetails'));
-app.use('/pokemon', setHeaderFooter, require('./routes/pokemonList'));
-app.use('/', setHeaderFooter, require('./routes/splash'));
+app.use('/filters', require('./routes/filters'));
+app.use('/pokemon/:name', require('./routes/pokemonDetails'));
+app.use('/pokemon', require('./routes/pokemonList'));
+app.use('/', require('./routes/splash'));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

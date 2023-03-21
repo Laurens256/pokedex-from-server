@@ -3,12 +3,12 @@ import { generateHeaderFooter } from '../utils/footerHeader';
 
 const setHeaderFooter = (req: Request, res: Response, next: NextFunction) => {
 	let view = '';
-	const firstSegment = req.baseUrl.split('/')[1];
+	const segments = req.url.split('/').filter((segment) => segment !== '');
 
-	if(firstSegment === 'pokemon' && req.params.name) {
+	if(segments[0] === 'pokemon' && segments[1]) {
 		view = 'pokemonDetails';
 	} else {
-		view = req.baseUrl;
+		view = req.url;
 	}
 
 	const { header, footer } = generateHeaderFooter(view);
