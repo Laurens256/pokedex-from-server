@@ -76,11 +76,24 @@ const calcBoundingRect = () => {
 	bottomBoundary = list.getBoundingClientRect().bottom;
 };
 
+const handleKeyDown = (e: KeyboardEvent) => {
+	if (e.key === 'ArrowUp') {
+		e.preventDefault();
+		moveArrow(-1);
+	} else if (e.key === 'ArrowDown') {
+		e.preventDefault();
+		moveArrow(1);
+	}
+};
+
 
 const init = () => {
 	listItems.forEach((listItem) => {
 		listItem.addEventListener('focus', followScroll);
 	});
+
+	window.addEventListener('keydown', handleKeyDown);
+
 	calcBoundingRect();
 };
 
