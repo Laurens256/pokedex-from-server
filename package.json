@@ -6,7 +6,10 @@
 	"scripts": {
 		"devOld": "nodemon --exec ts-node index.ts",
 		"devOold": "nodemon -e '*' --exec \"node --require ts-node/register --inspect index.ts\"",
-		"dev": "nodemon -e '*' --exec \"node --require ts-node/register --inspect index.ts\""
+		
+		"dev": "npm run dev-server & npm run dev-client",
+		"dev-server": "nodemon -e '*' --exec \"node --require ts-node/register --inspect index.ts\"",
+		"dev-client": "tsc --watch --project ./public/scripts/tsconfig.json"
 	},
 	"author": "Laurens256",
 	"license": "MIT",
