@@ -1,17 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { generateHeaderFooter } from '../utils/footerHeader';
+import { findRoute } from '../utils/findRoute';
 
-const setHeaderFooter = (req: Request, res: Response, next: NextFunction) => {
-	let view = '';
-	const segments = req.url.split('/').filter((segment) => segment !== '');
+const setHeaderFooter = async (req: Request, res: Response, next: NextFunction) => {
+	// haal viewname op
+	const viewName = (await findRoute(req.url.split('?')[0])).route.viewName;
 
-	if(segments[0] === 'pokemon' && segments[1]) {
-		view = 'pokemonDetails';
-	} else {
-		view = req.url;
-	}
-
-	const { header, footer } = generateHeaderFooter(view);
+	const { header, footer } = generateHeaderFooter(viewName);
 
 	res.locals.headings = header;
 	res.locals.footerControls = footer;

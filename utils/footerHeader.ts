@@ -18,23 +18,23 @@ const generateHeaderFooter = (_view: string) => {
 };
 
 const headers = {
-	filters: ['POKéDEX', 'TABLE OF CONTENTS'],
-	pokemon: ['POKéMON&nbsp;&nbsp;LIST'],
-	pokemonDetails: ['POKéMON&nbsp;&nbsp;DETAILS'],
-	error: ['404', 'PAGE NOT FOUND']
+	FilterView: ['POKéDEX', 'TABLE OF CONTENTS'],
+	PokemonListView: ['POKéMON&nbsp;&nbsp;LIST'],
+	PokemonDetailsView: ['POKéMON&nbsp;&nbsp;DETAILS'],
+	ErrorView: ['404', 'PAGE NOT FOUND']
 };
 
 const footerControls = {
-	filters: [
+	FilterView: [
 		{ classes: ['control-icon', 'd-pad', 'vertical'], text: 'PICK', key: 'ArrowDown' },
 		{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' }
 	],
-	pokemon: [
+	PokemonListView: [
 		{ classes: ['control-icon', 'd-pad', 'vertical'], text: 'PICK', key: 'ArrowDown' },
 		{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' },
 		{ classes: ['control-icon', 'b-button'], text: 'CANCEL', key: 'b' }
 	],
-	pokemonDetails: [
+	PokemonDetailsView: [
 		{ classes: ['control-icon', 'space-bar'], text: 'CRY', key: ' ' },
 		{
 			classes: ['control-icon', 'd-pad', 'right', 'left'],
@@ -43,7 +43,7 @@ const footerControls = {
 		},
 		{ classes: ['control-icon', 'b-button'], text: 'CANCEL', key: 'b' }
 	],
-	error: [
+	ErrorView: [
 		{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' },
 		{ classes: ['control-icon', 'd-pad', 'horizontal'], text: 'PICK', key: 'ArrowRight' }
 	]

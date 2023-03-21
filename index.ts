@@ -1,9 +1,15 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import path from 'path';
+
+// hbs
 import { engine } from 'express-handlebars';
 import hbsHelpers from './utils/handlebars/globalHelpers';
 import pokemonHelpers from './utils/handlebars/pokemonHelpers';
+
+// middlewares
 import { setHeaderFooter } from './middleware/setHeaderFooter';
+import { setMeta } from './middleware/meta';
+
 import routes from './routes/routes';
 
 import * as dotenv from 'dotenv';
@@ -31,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // middleware for header and footer
 app.use(setHeaderFooter);
+app.use(setMeta);
 
 // routes
 routes.forEach((route) => {
