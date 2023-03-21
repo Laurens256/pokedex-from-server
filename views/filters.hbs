@@ -5,6 +5,7 @@
 		<li><a
 				href='/pokemon?order={{sortOrders.0.class}}'
 				aria-label='sort by {{sortOrders.0.class}}'
+				data-img='{{sortOrders.0.class}}'
 			>{{toUpperCase sortOrders.0.name}} MODE</a></li>
 
 		<li><h2>POKéMON HABITATS</h2></li>
@@ -13,6 +14,7 @@
 					class='habitat'
 					href='/pokemon?habitat={{this.class}}'
 					aria-label='filter by {{this.name}} habitat'
+					data-img='{{this.class}}'
 				>{{this.name}} {{pokemonStr}}</a></li>
 		{{/each}}
 
@@ -23,13 +25,13 @@
 						class='sort'
 						href='/pokemon?order={{this.class}}'
 						aria-label='sort by {{this.name}}'
+						data-img='{{this.class}}'
 					>{{toUpperCase this.name}} MODE</a></li>
 			{{/unless}}
 		{{/each}}
 
 		<li><h2>OTHER</h2></li>
-		<li><a href='/' class='close' aria-label='close pokedex'>CLOSE POKéDEX</a></li>
+		<li><a href='/' class='close' data-img='close' aria-label='close pokedex'>CLOSE POKéDEX</a></li>
 	</ul>
-	{{! div for background img }}
-	<div></div>
+	<img src="img/pokedex-icons/{{sortOrders.0.class}}.png" alt="">
 </div>
