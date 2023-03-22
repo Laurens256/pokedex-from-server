@@ -1,5 +1,5 @@
 import express, { Request } from 'express';
-import { getFullPokemonDetails } from '../utils/dataFetch';
+import { getFullPokemonDetailsByName } from '../utils/dataFetch';
 import { Pokemon, Species } from '../types';
 
 const router = express.Router({ mergeParams: true });
@@ -11,7 +11,7 @@ export interface ReqWithParams extends Request {
 router.get('/', async (req: ReqWithParams, res) => {
 	const name = req.params.name;
 
-	const pokemonDatas = (await getFullPokemonDetails([name]))[0];
+	const pokemonDatas = (await getFullPokemonDetailsByName([name]))[0];
 
 	const pokemon = { ...pokemonDatas[0], ...pokemonDatas[1] };
 	const cleanedPokemon = cleanPokemonData(pokemon);

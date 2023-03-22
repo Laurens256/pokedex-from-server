@@ -11,15 +11,15 @@ const sortOrders = [
 ];
 
 const filters = [
-	{ name: 'rare', class: 'rare' },
-	{ name: 'urban', class: 'urban' },
-	{ name: 'rough-terrain', class: 'rough-terrain' },
-	{ name: 'mountain', class: 'mountain' },
-	{ name: 'cave', class: 'cave' },
-	{ name: 'sea', class: 'sea' },
-	{ name: "water's edge", class: 'waters-edge' },
+	{ name: 'grassland', class: 'grassland' },
 	{ name: 'forest', class: 'forest' },
-	{ name: 'grassland', class: 'grassland' }
+	{ name: "water's edge", class: 'waters-edge' },
+	{ name: 'sea', class: 'sea' },
+	{ name: 'cave', class: 'cave' },
+	{ name: 'mountain', class: 'mountain' },
+	{ name: 'rough-terrain', class: 'rough-terrain' },
+	{ name: 'urban', class: 'urban' },
+	{ name: 'rare', class: 'rare' }
 ];
 
 router.get('/', async (req, res) => {
@@ -33,3 +33,4 @@ router.get('/', async (req, res) => {
 });
 
 export default router;
+export { filters };
