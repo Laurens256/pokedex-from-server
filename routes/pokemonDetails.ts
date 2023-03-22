@@ -19,6 +19,7 @@ router.get('/', async (req: ReqWithParams, res) => {
 	res.render('pokemonDetails', {
 		...res.locals,
 		css: ['pokemon-details'],
+		js: ['pokemonDetails'],
 		pokemon: cleanedPokemon
 	});
 });
