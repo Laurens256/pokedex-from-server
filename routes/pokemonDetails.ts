@@ -11,9 +11,9 @@ export interface ReqWithParams extends Request {
 router.get('/', async (req: ReqWithParams, res) => {
 	const name = req.params.name;
 
-	const pokemonDatas = await getFullPokemonDetails(name);
-	const pokemon = {...pokemonDatas[0], ...pokemonDatas[1]};
+	const pokemonDatas = (await getFullPokemonDetails([name]))[0];
 
+	const pokemon = { ...pokemonDatas[0], ...pokemonDatas[1] };
 	const cleanedPokemon = cleanPokemonData(pokemon);
 
 	res.render('pokemonDetails', {
@@ -23,7 +23,7 @@ router.get('/', async (req: ReqWithParams, res) => {
 	});
 });
 
-interface FullPokemonData extends Pokemon, Species {};
+interface FullPokemonData extends Pokemon, Species {}
 const cleanPokemonData = (pokemon: FullPokemonData) => {
 	const cleanedPokemon = {
 		name: pokemon.name,
@@ -38,11 +38,14 @@ const cleanPokemonData = (pokemon: FullPokemonData) => {
 };
 
 const chooseFlavorText = (flavorTextEntries: Species['flavor_text_entries']) => {
-	const englishEntries = flavorTextEntries.filter((entry: any) => entry.language.name === 'en');
-	const randomEntry = englishEntries[Math.floor(Math.random() * englishEntries.length)].flavor_text.replace(//g, ' ');
+	const englishEntries = flavorTextEntries.filter(
+		(entry: any) => entry.language.name === 'en'
+	);
+	const randomEntry = englishEntries[
+		Math.floor(Math.random() * englishEntries.length)
+	].flavor_text.replace(//g, ' ');
 
 	return randomEntry;
 };
-
 
 export default router;
