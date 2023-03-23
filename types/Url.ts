@@ -1,4 +1,4 @@
-export default interface Url {
+export interface Url {
 	name: string;
 	url: string;
 };

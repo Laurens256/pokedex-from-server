@@ -1,6 +1,6 @@
 import { Url } from './';
 
-export default interface Pokemon {
+export interface Pokemon {
 	abilities: { ability: Url; is_hidden: boolean; slot: number }[];
 	base_experience: number;
 	forms: Url[];

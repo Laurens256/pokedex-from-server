@@ -1,6 +1,6 @@
 import { Url } from './';
 
-export default interface Species {
+export interface Species {
 	base_happiness: number;
 	capture_rate: number;
 	color: Url;

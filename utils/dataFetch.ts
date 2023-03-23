@@ -11,25 +11,22 @@ const getDataFromAPI = async (query: string) => {
 	return await (await fetch(url)).json();
 };
 
-// function om volledige pokemon details op te halen (pokemon + pokemon-species). Function neemt een array van namen mee, slomer dan wanneer de pokemon id al bekend is
-const getFullPokemonDetailsByName = async (names: string[]) => {
-	const promises = names.map(async (name: string) => {
-		const pokemonSpecies: Species = await getDataFromAPI(`pokemon-species/${name}`);
-		const pokemon: Promise<Pokemon> = getDataFromAPI(`pokemon/${pokemonSpecies.id}`);
 
-		return Promise.all([pokemonSpecies, pokemon]);
-	});
+const hasLetters = new RegExp(/\D/);
+const getFullPokemonDetails = async (queries: string[]) => {
+	const promises = queries.map(async (query: string) => {
+		// fetch pokemon species using name or id, this call is always needed
+		const pokemonSpecies: Promise<Species> = getDataFromAPI(`pokemon-species/${query}`);
 
-	return Promise.all(promises);
-};
-
-// haalt volledige pokemon details op wanneer de id al wel bekend is. Sneller omdat je niet de eerste pokemon-species call hoeft te awaiten
-const getFullPokemonDetailsById = async (ids: string[]) => {
-	const promises = ids.map(async (id: string) => {
-		const pokemonSpecies: Promise<Species> = getDataFromAPI(`pokemon-species/${id}`);
-		const pokemon: Promise<Pokemon> = getDataFromAPI(`pokemon/${id}`);
-
-		return Promise.all([pokemonSpecies, pokemon]);
+		// if query contains letters, it's a name, so await species call to get id, name is not always accurate for pokemon
+		if (hasLetters.test(query)) {
+			const pokemon: Promise<Pokemon> = getDataFromAPI(`pokemon/${(await pokemonSpecies).id}`);
+			return Promise.all([pokemonSpecies, pokemon]);
+		} else {
+			// if query contains only numbers, it's an id, so no need to await species call
+			const pokemon: Promise<Pokemon> = getDataFromAPI(`pokemon/${query}`);
+			return Promise.all([pokemonSpecies, pokemon]);
+		}
 	});
 
 	return Promise.all(promises);
@@ -72,8 +69,7 @@ const idArrFromUrlArr = (urlArr: string[]) => {
 
 export {
 	getPokemonByRegion,
-	getFullPokemonDetailsByName,
-	getFullPokemonDetailsById,
+	getFullPokemonDetails,
 	getUrlArr,
 	idArrFromUrlArr
 };

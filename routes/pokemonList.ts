@@ -4,7 +4,7 @@ import {
 	getPokemonByRegion,
 	getUrlArr,
 	idArrFromUrlArr,
-	getFullPokemonDetailsById
+	getFullPokemonDetails
 } from '../utils/dataFetch';
 import { filters } from './filters';
 import { Pokemon, PokemonTypes } from '../types';
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 		const urlArr = await getUrlArr();
 		const pokemonIdArr = idArrFromUrlArr(urlArr);
 
-		const pokemonDatas = await getFullPokemonDetailsById(pokemonIdArr);
+		const pokemonDatas = await getFullPokemonDetails(pokemonIdArr);
 
 		pokemonDatas.forEach((pokemonData) => {
 			const pokemon = { ...pokemonData[0], ...pokemonData[1] };
