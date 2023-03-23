@@ -4,14 +4,14 @@ const generateHeaderFooter = (_view: string) => {
 
 	let headerFooter: {
 		header?: {};
-		footer?: {};
+		hasFooter?: boolean;
 	} = {};
 
 	if (headers.hasOwnProperty(view)) {
 		headerFooter.header = headers[view as keyof typeof headers];
 	}
-	if (footerControls.hasOwnProperty(view)) {
-		headerFooter.footer = footerControls[view as keyof typeof footerControls];
+	if (hasFooter.includes(view)) {
+		headerFooter.hasFooter = true;
 	}
 
 	return headerFooter;
@@ -24,29 +24,11 @@ const headers = {
 	ErrorView: ['404', 'PAGE NOT FOUND']
 };
 
-const footerControls = {
-	FilterView: [
-		{ classes: ['control-icon', 'd-pad', 'vertical'], text: 'PICK', key: 'ArrowDown' },
-		{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' }
-	],
-	PokemonListView: [
-		{ classes: ['control-icon', 'd-pad', 'vertical'], text: 'PICK', key: 'ArrowDown' },
-		{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' },
-		{ classes: ['control-icon', 'b-button'], text: 'CANCEL', key: 'b' }
-	],
-	PokemonDetailsView: [
-		{ classes: ['control-icon', 'space-bar'], text: 'CRY', key: ' ' },
-		{
-			classes: ['control-icon', 'd-pad', 'right', 'left'],
-			text: 'SWITCH',
-			key: 'ArrowRight'
-		},
-		{ classes: ['control-icon', 'b-button'], text: 'CANCEL', key: 'b' }
-	],
-	ErrorView: [
-		{ classes: ['control-icon', 'a-button'], text: 'OK', key: 'a' },
-		{ classes: ['control-icon', 'd-pad', 'horizontal'], text: 'PICK', key: 'ArrowRight' }
-	]
-};
+const hasFooter = [
+	'FilterView',
+	'PokemonListView',
+	'PokemonDetailsView',
+	'ErrorView'
+];
 
 export { generateHeaderFooter };

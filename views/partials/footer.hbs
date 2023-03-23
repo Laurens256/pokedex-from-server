@@ -1,12 +1,5 @@
-{{#if footerControls}}
+{{#if hasFooter}}
 	<footer>
-		<ul>
-			{{#each footerControls}}
-			{{!-- spreadClass: string[] => string string string --}}
-				<li class="{{spreadAttributes this.classes}}">
-					{{this.text}}
-				</li>
-			{{/each}}
-		</ul>
+		<ul></ul>
 	</footer>
 {{/if}}

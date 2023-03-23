@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { findRoute } from '../utils/findRoute';
 
-let pokemonName = '';
 const setMeta = async (req: Request, res: Response, next: NextFunction) => {
 	const view = await findRoute(req.url.split('?')[0]);
 	const viewName = view.route.viewName as keyof typeof metaData || 'Fallback';
@@ -11,6 +10,7 @@ const setMeta = async (req: Request, res: Response, next: NextFunction) => {
 	}
 
 	res.locals.meta = metaData[viewName] ?? metaData.Fallback;
+	res.locals.meta.viewName = viewName;
 
 	next();
 };

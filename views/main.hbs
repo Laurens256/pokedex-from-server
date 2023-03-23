@@ -13,6 +13,7 @@
 			<link rel='stylesheet' href='/styles/{{this}}.css' />
 		{{/each}}
 
+			<script src='/scripts/dist/main.js' type="module"></script>
 		{{#each js}}
 			<script src='/scripts/dist/{{this}}.js' type="module"></script>
 		{{/each}}
@@ -20,6 +21,8 @@
 		{{#if (or this.headings this.footerControls)}}
 			<link rel='stylesheet' href='/styles/partials/header-footer.css' />
 		{{/if}}
+
+		<meta name="currentView" content="{{meta.viewName}}">
 
 	</head>
 	<body>
