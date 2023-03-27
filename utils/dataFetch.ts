@@ -1,13 +1,12 @@
 import { Pokemon, Species } from '../types';
 
-// let pokemonArr: Pokemon[] | Promise<Pokemon[]>;
+let pokemonArr: Pokemon[] | Promise<Pokemon[]>;
 
 const baseApiUrl = 'https://pokeapi.co/api/v2/';
 const defaultRegion = 'kanto';
 
 // generieke function om data op te halen
 const getDataFromAPI = async (query: string) => {
-	console.log('fetched', query);
 	const url = query.includes('//') ? query : baseApiUrl + query;
 	return await (await fetch(url)).json();
 };
@@ -35,9 +34,9 @@ const getFullPokemonDetails = async (queries: string[]) => {
 
 // function om pokemon per region op te halen
 const getPokemonByRegion = async (regionStr: string = defaultRegion) => {
-	// if (pokemonArr) {
-	// 	return pokemonArr;
-	// }
+	if (pokemonArr) {
+		return pokemonArr;
+	}
 
 	const urlArr: string[] = await getUrlArr(regionStr);
 	const pokemonIdArr: string[] = idArrFromUrlArr(urlArr);
@@ -46,7 +45,7 @@ const getPokemonByRegion = async (regionStr: string = defaultRegion) => {
 		return getDataFromAPI(`pokemon/${id}`);
 	});
 
-	// pokemonArr = Promise.all(promises);
+	pokemonArr = Promise.all(promises);
 
 	return Promise.all(promises);
 };
