@@ -8,6 +8,11 @@ const head = document.querySelector('head')!;
 
 let imgUrls: string[] = [];
 
+const init = () => {
+	initList();
+	initSideSprite();
+};
+
 const initSideSprite = () => {
 	links.forEach((link) => {
 		const imgUrl = link.dataset.img;
@@ -15,6 +20,7 @@ const initSideSprite = () => {
 		link.addEventListener('focus', changeSprite);
 	});
 };
+
 
 // preload images terwijl je door de lijst scrolled
 const preloadImages = (current: HTMLAnchorElement) => {
@@ -41,5 +47,4 @@ const changeSprite = (e: FocusEvent) => {
 	}
 };
 
-initList();
-initSideSprite();
+init();
