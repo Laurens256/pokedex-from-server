@@ -15,11 +15,15 @@ const playCry = (fallback = true) => {
 		audio.onerror = () => {
 			if (fallbackUsed) return;
 			fallbackUsed = true;
-			const fallbackAudio = new Audio('/audio/whoops.wav');
-			fallbackAudio.play();
+			playErrorSound();
 		};
 	}
 	audio.play();
 };
 
-export { playBeepSound, playCry };
+const playErrorSound = () => {
+	const errorAudio = new Audio('/audio/whoops.wav');
+	errorAudio.play();
+};
+
+export { playBeepSound, playCry, playErrorSound };

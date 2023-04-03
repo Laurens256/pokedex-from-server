@@ -7,6 +7,7 @@ const saveQueryString = () => {
 
 const handleKeydown = (e: KeyboardEvent) => {
 	if (e.key === 'Escape' || e.key === 'b') {
+		e.preventDefault();
 		window.location.href = '/filters';
 	}
 };
