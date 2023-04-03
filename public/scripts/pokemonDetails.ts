@@ -54,7 +54,7 @@ const getPokemonName = async (direction: number) => {
 const init = () => {
 	playCry(false);
 	backButtonLogic();
-	document.addEventListener('keydown', handleKeyDown);
+	window.addEventListener('keydown', handleKeyDown);
 };
 
 init();

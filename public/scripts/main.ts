@@ -12,18 +12,15 @@ const init = () => {
 	registerServiceWorker();
 };
 
-const registerServiceWorker = () => {
+const registerServiceWorker = async () => {
 	// Check if the browser supports service workers
 	if ('serviceWorker' in navigator) {
 		// Register the service worker
-		navigator.serviceWorker
-			.register('/service-worker.js')
-			.then(() => {
-				console.log('Service worker registered!');
-			})
-			.catch((error) => {
-				console.error('Service worker registration failed:', error);
-			});
+		try {
+			await navigator.serviceWorker.register('/service-worker.js');
+		} catch (error) {
+			console.error('Service worker registration failed:', error);
+		}
 	}
 };
 

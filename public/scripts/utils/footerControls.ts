@@ -6,12 +6,24 @@ const generateFooterControls = (view: string) => {
 
 	for (const control of footerControls[view as keyof typeof footerControls]) {
 		const li = document.createElement('li');
+		const button = document.createElement('button');
+		button.textContent = control.text;
 		li.classList.add(...control.classes);
-		li.textContent = control.text;
+
+		setControl(button, control.key);
+
+		li.appendChild(button);
 		footerList.appendChild(li);
 	}
 };
 
+const setControl = (element: HTMLButtonElement, key: string) => {
+	element.addEventListener('mousedown', (e) => {
+		e.preventDefault();
+		const event = new KeyboardEvent('keydown', { key });
+		window.dispatchEvent(event);
+	});
+};
 
 const footerControls = {
 	FilterView: [

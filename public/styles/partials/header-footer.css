@@ -56,9 +56,25 @@ footer ul {
 
 footer ul li {
 	position: relative;
+}
+
+footer ul li button {
 	padding-left: 1em;
-	cursor: pointer;
 	user-select: none;
+	color: inherit;
+	font-size: inherit;
+	text-shadow: inherit;
+}
+
+footer ul li button:focus-visible,
+footer ul li button:hover {
+	text-decoration: underline;
+	text-underline-offset: .1em;
+}
+
+footer ul li button:focus-visible {
+	outline: solid 2px #000;
+	outline-offset: 10px;
 }
 
 footer ul li.control-icon::before {

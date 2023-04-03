@@ -15,7 +15,7 @@ const handleKeydown = (e: KeyboardEvent) => {
 const init = ()=> {
 	saveQueryString();
 	initList();
-	document.addEventListener('keydown', handleKeydown);
+	window.addEventListener('keydown', handleKeydown);
 };
 
 init();
