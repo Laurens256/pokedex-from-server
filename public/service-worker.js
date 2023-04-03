@@ -18,14 +18,7 @@ self.addEventListener('fetch', (event) => {
 				return response;
 			})
 			.catch(async () => {
-				// If there's no network, serve the cached response
-				// const response = await caches.match(event.request);
-				// if (response) {
-				// 	return response;
-				// } else {
-					// If there's no cached response, serve the fallback HTML page
-					return caches.match('/fallback.html');
-				// }
+				return caches.match('/fallback.html');
 			})
 	);
 });
