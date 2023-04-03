@@ -1,13 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>POKéDEX | OFFLINE</title>
-	<link rel="stylesheet" href="/styles/main.css">
-</head>
-<body>
-	offline
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>POKéDEX | OFFLINE</title>
+		<link rel="stylesheet" href="/styles/main.css" />
+		<link rel="stylesheet" href="/styles/partials/header-footer.css" />
+
+		<link rel="icon" type="image/x-icon" href="/img/favicon.png">
+	</head>
+
+	<style>
+		main {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: calc(100vh - var(--header-footer-height) * 2);
+		}
+
+		main section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-shadow: var(--text-shadow-black);
+			text-align: center;
+		}
+
+		main section h2 {
+			font-size: 2rem;
+			font-weight: 500;
+			margin-bottom: 0.5rem;
+		}
+
+		main section p {
+			font-size: 1.5rem;
+			font-weight: 400;
+		}
+
+		main section button {
+			margin-top: 1rem;
+			font-size: 1.4rem;
+			padding: 0.5em 1em;
+			width: 8em;
+			border-radius: 5px;
+			background-color: #fff;
+			color: #000;
+			border: solid 2px #000;
+			text-shadow: inherit;
+			transition: all 0.15s ease-in-out;
+		}
+
+		main section button:focus-visible,
+		main section button:hover {
+			border-color: var(--text-orange);
+			outline: none;
+		}
+	</style>
+
+	<body>
+		<header>
+			<ul>
+				<li><h1>OFFLINE&nbsp;&nbsp;&nbsp;MODE</h1></li>
+				<li><h2>POKéMON&nbsp;&nbsp;&nbsp;FACTS</h2></li>
+			</ul>
+		</header>
+
+		<main>
+			<section>
+				<h2>Network is currently unavailable; but take a look at these Pokémon facts</h2>
+				<p class="facts">
+					Pikachu was originally supposed to have a third evolution called Gorochu.
+				</p>
+
+				<button onclick="setRandomFact()">New fact</button>
+			</section>
+		</main>
+
+		<footer></footer>
+	</body>
+
+	<script>
+		const setRandomFact = () => {
+			const factsEl = document.querySelector('.facts');
+			const randomFact = pokemonFacts[Math.floor(Math.random() * pokemonFacts.length)];
+			factsEl.textContent = randomFact;
+		};
+
+		const pokemonFacts = [
+			'Pikachu was originally supposed to have a third evolution called Gorochu.',
+			'Jigglypuff was the first Pokémon to ever speak in the anime.',
+			'Eevee has the most evolutions of any Pokémon, with eight different forms.',
+			'Psyduck is one of the few Pokémon that can learn a move that has a chance to cause confusion.',
+			'The name “Charizard” is a combination of the words “charcoal” and “lizard.”',
+			'Slowbro’s tail is actually a Shellder that latched onto its tail and never let go.',
+			'In the Pokémon games, if you catch all 150 Pokémon, Professor Oak will give you a special diploma.',
+			'The ghost Pokémon, Gastly, is based on the Japanese mythical creature called the “Nuppeppo.”',
+			'Snorlax was inspired by a Japanese legend about a giant sumo wrestler who loved to sleep.',
+			'The legendary bird Pokémon, Articuno, is based on a creature from Inuit mythology.',
+			'Bulbasaur was the first Pokémon created by Game Freak.',
+			'The poison on Zubat’s wings has a sedative effect, which makes it easier for them to catch prey.',
+			'Charmander is the only Pokémon to have two evolutions that require the same level.',
+			'Mewtwo was created by humans in a lab, and is not a natural Pokémon.',
+			'Gyarados was originally supposed to be called “Skullkraken.”',
+			'In the Pokémon games, Clefairy was originally intended to be the main character, but Pikachu took its place.',
+			'Oddish’s scientific name is “Oddium Wanderus.”',
+			'Kangaskhan is based on the legendary creature known as the “Jikininki.”',
+			'Togepi’s egg shell is said to be incredibly tough, and can withstand even volcanic eruptions.',
+			'The psychic Pokémon, Alakazam, has an IQ of over 5000.',
+			'In the Pokémon anime, Pikachu is voiced by a woman named Ikue Otani.',
+			'The water Pokémon, Lapras, is based on the Loch Ness Monster.',
+			'Squirtle’s name is a combination of the words “squirrel” and “turtle.”',
+			'Haunter is one of the few Pokémon that can learn the move “Dream Eater.”',
+			'Meowth was originally intended to be a member of Ash’s team in the anime, but was replaced by Pikachu.',
+			'Muk’s original Japanese name is “Betobeton,” which is a play on the words “slime” and “betonamu” (the Japanese word for “Vietnam”).',
+			'Arcanine was originally supposed to be a legendary Pokémon, but was later changed to a regular one.',
+			'The legendary Pokémon, Moltres, is based on the mythical Phoenix.',
+			'Abra can teleport itself away from danger by using its psychic powers.',
+			'Blastoise’s cannons are powerful enough to punch holes through steel.'
+		];
+
+		setRandomFact();
+	</script>
 </html>
