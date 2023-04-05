@@ -40,3 +40,33 @@ self.addEventListener('fetch', async (event: FetchEvent) => {
 	}
 });
 ```
+
+## Week 3
+In week 3 heb ik de service worker eigenlijk helemaal opnieuw geschreven zodat deze enkel een statische pagina serveerd wanneer er geen netwerk beschikbaar is. Op deze pagina worden wat Pokémon weetjes getoond totdat er weer een netwerk beschikbaar is. Dit leek me wat simpeler om correct te implementeren. Hieronder een deel van de service worker code.
+```js
+self.addEventListener('fetch', async (event) => {
+	event.respondWith(
+		fetch(event.request)
+			.then((response) => {
+				return response;
+			})
+			.catch(async () => {
+				// If there's no network, serve the cached response
+				const response = await caches.match(event.request);
+				if (response) {
+					return response;
+				} else {
+					// If there's no cached response, serve the fallback HTML page
+					return caches.match('/offline.html');
+				}
+			})
+	);
+});
+```
+
+Verder ben ik deze week bezig geweest met het afronden van wat kleine details. Zo heb ik de keyboard controls overal geimplementeerd en overal ook met de muis klikbaar gemaakt.
+
+## Activity diagram
+<p align="center">
+ <img src="./public/img/readme/activity-diagram.png" alt="activity diagram">
+</p>
