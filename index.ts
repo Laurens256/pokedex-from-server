@@ -1,4 +1,5 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
+import compression from 'compression';
 import path from 'path';
 
 // hbs
@@ -34,7 +35,8 @@ app.set('views', './views');
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// middleware for header and footer
+// middleware
+app.use(compression());
 app.use(setHeaderFooter);
 app.use(setMeta);
 

@@ -16,16 +16,17 @@ const init = () => {
 const initSideSprite = () => {
 	links.forEach((link) => {
 		const imgUrl = link.dataset.img;
-		imgUrls.push(imgUrl!);
-		link.addEventListener('focus', changeSprite);
+		if (imgUrl) {
+			imgUrls.push(imgUrl!);
+			link.addEventListener('focus', changeSprite);
+		}
 	});
 };
-
 
 // preload images terwijl je door de lijst scrolled
 const preloadImages = (current: HTMLAnchorElement) => {
 	// niet preloaden voor mobile omdat img daar niet zichtbaar is
-	if(window.matchMedia('(max-width: 600px)').matches) return;
+	if (window.matchMedia('(max-width: 600px)').matches) return;
 
 	const index = Array.from(links).indexOf(current);
 	const next = links[index + 1];
@@ -33,7 +34,10 @@ const preloadImages = (current: HTMLAnchorElement) => {
 	if (next) {
 		const link = head.querySelector(`link[href*="${next.dataset.img}"]`);
 		if (!link) {
-			head.insertAdjacentHTML('beforeend', `<link rel="preload" type="image/png" href="/img/pokedex-icons/${next.dataset.img}.png" as="image">`);
+			head.insertAdjacentHTML(
+				'beforeend',
+				`<link rel="preload" type="image/png" href="/img/pokedex-icons/${next.dataset.img}.png" as="image">`
+			);
 		}
 	}
 };
