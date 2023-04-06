@@ -1,6 +1,3 @@
-import { delay } from './delay.js';
-import { playBeepSound } from './sfx.js';
-
 const list: HTMLOListElement | HTMLUListElement = document.querySelector('.select-list')!;
 const listItems = Array.from(list.querySelectorAll('a'));
 let topBoundary = 0;
@@ -111,6 +108,16 @@ const saveFocus = () => {
 	}
 };
 
+
+// beep
+const playBeepSound = () => {
+	const focusAudio = new Audio('/audio/select_effect.wav');
+	focusAudio.play();
+};
+
+const delay = (n: number) => {
+	return new Promise((resolve) => setTimeout(resolve, n));
+};
 
 const initList = () => {
 	listItems.forEach((listItem) => {

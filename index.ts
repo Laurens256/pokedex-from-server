@@ -4,17 +4,23 @@ import path from 'path';
 
 // hbs
 import { engine } from 'express-handlebars';
-import hbsHelpers from './utils/handlebars/globalHelpers';
-import pokemonHelpers from './utils/handlebars/pokemonHelpers';
+import hbsHelpers from './utils/handlebars/globalHelpers.js';
+import pokemonHelpers from './utils/handlebars/pokemonHelpers.js';
 
 // middlewares
-import { setHeaderFooter } from './middleware/setHeaderFooter';
-import { setMeta } from './middleware/meta';
+import { setHeaderFooter } from './middleware/setHeaderFooter.js';
+import { setMeta } from './middleware/meta.js';
 
-import routes from './routes/routes';
+import routes from './routes/routes.js';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 const app = express();
 

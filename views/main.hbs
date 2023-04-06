@@ -8,21 +8,12 @@
 		<meta name='description' content='{{meta.description}}'>
 		<link rel="icon" type="image/x-icon" href="/img/favicon.png">
 
-		<link rel='stylesheet' href='/styles/main.css' />
-		{{#each css}}
-			<link rel='stylesheet' href='/styles/{{this}}.css' />
-		{{/each}}
+		<link rel='stylesheet' href='/index.css' />
 
-			<script src='/scripts/dist/main.js' type="module"></script>
-		{{#each js}}
-			<script src='/scripts/dist/{{this}}.js' type="module"></script>
-		{{/each}}
+		<script>var exports = {};</script>
+		<script src='/index.js' type="module"></script>
 
-		{{#if (or this.headings this.footerControls)}}
-			<link rel='stylesheet' href='/styles/partials/header-footer.css' />
-		{{/if}}
-
-		<link rel="manifest" href="../manifest.json">
+		{{!-- <link rel="manifest" href="../manifest.json"> --}}
 		<meta name="currentView" content="{{meta.viewName}}">
 
 	</head>

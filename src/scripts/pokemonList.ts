@@ -1,4 +1,4 @@
-import { initList } from './utils/generalList.js';
+import { initList } from './generalList';
 
 const saveQueryString = () => {
 	const queryString = window.location.search;
@@ -12,10 +12,8 @@ const handleKeydown = (e: KeyboardEvent) => {
 	}
 };
 
-const init = ()=> {
+(()=> {
 	saveQueryString();
 	initList();
 	window.addEventListener('keydown', handleKeydown);
-};
-
-init();
+})();

@@ -1,4 +1,4 @@
-import { initList } from './utils/generalList.js';
+import { initList } from './generalList';
 
 const links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll(
 	'.filters li a[data-img]'
@@ -7,11 +7,6 @@ const sideSprite: HTMLImageElement = document.querySelector('.filters img')!;
 const head = document.querySelector('head')!;
 
 let imgUrls: string[] = [];
-
-const init = () => {
-	initList();
-	initSideSprite();
-};
 
 const initSideSprite = () => {
 	links.forEach((link) => {
@@ -51,4 +46,7 @@ const changeSprite = (e: FocusEvent) => {
 	}
 };
 
-init();
+(() => {
+	initList();
+	initSideSprite();
+})();

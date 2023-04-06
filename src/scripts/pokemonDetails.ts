@@ -1,5 +1,3 @@
-import { playCry, playErrorSound } from './utils/sfx.js';
-
 let pokemonNameArr: string[] = [];
 
 const backButton: HTMLAnchorElement | null = document.querySelector('a.back');
@@ -51,10 +49,30 @@ const getPokemonName = async (direction: number) => {
 	}
 };
 
-const init = () => {
+// speel pokemon cry sfx of error sfx
+const playCry = (fallback = true) => {
+	let fallbackUsed = false;
+	const audio = new Audio();
+	audio.src = `https://play.pokemonshowdown.com/audio/cries/${window.location.pathname
+		.split('/')
+		.pop()}.mp3`;
+	if (fallback) {
+		audio.onerror = () => {
+			if (fallbackUsed) return;
+			fallbackUsed = true;
+			playErrorSound();
+		};
+	}
+	audio.play();
+};
+
+const playErrorSound = () => {
+	const errorAudio = new Audio('/audio/whoops.wav');
+	errorAudio.play();
+};
+
+(() => {
 	playCry(false);
 	backButtonLogic();
 	window.addEventListener('keydown', handleKeyDown);
-};
-
-init();
+})();

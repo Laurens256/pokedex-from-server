@@ -1,4 +1,4 @@
-import { Url } from './';
+import { Url } from './index.js';
 
 export interface Species {
 	base_happiness: number;

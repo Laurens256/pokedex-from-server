@@ -5,9 +5,9 @@ import {
 	getUrlArr,
 	idArrFromUrlArr,
 	getFullPokemonDetails
-} from '../utils/dataFetch';
-import { filters } from './filters';
-import { Pokemon, PokemonTypes } from '../types';
+} from '../utils/dataFetch.js';
+import { filters } from './filters.js';
+import { Pokemon, PokemonTypes } from '../types/index.js';
 
 const router = express.Router();
 
