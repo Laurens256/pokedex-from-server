@@ -9,6 +9,7 @@ const offlineCacheFiles = [
 ];
 
 self.addEventListener('install', (event) => {
+	console.log('Service worker installing...');
 	event.waitUntil(
 		(async () => {
 			const cache = await caches.open(offlineCacheName);

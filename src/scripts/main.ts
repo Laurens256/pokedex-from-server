@@ -6,8 +6,7 @@ const init = () => {
 		const currentView = currentViewEl.content;
 		generateFooterControls(currentView);
 	}
-
-	registerServiceWorker();
+	window.addEventListener('load', registerServiceWorker);
 };
 
 const registerServiceWorker = async () => {
