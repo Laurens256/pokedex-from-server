@@ -5,7 +5,7 @@
 	"main": "index.ts",
 	"scripts": {
 		"prestart": "npm run build",
-		"start": "ts-node --esm index.ts",
+		"start": "node index.ts",
 		"predev": "npm run build",
 		"dev": "nodemon --esm index.ts & npm run watch",
 		"prebuild": "rimraf ./public",
@@ -24,7 +24,6 @@
 	"author": "Laurens256",
 	"license": "MIT",
 	"dependencies": {
-		"ts-node": "^10.9.1",
 		"compression": "^1.7.4",
 		"express": "^4.18.2",
 		"express-handlebars": "^7.0.2"
@@ -43,6 +42,7 @@
 		"nodemon": "^2.0.21",
 		"npm-run-all": "^4.1.5",
 		"rimraf": "^4.4.1",
+		"ts-node": "^10.9.1",
 		"typescript": "^5.0.2"
 	},
 	"type": "module"
