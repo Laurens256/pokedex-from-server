@@ -1,4 +1,4 @@
-import { PokemonTypes } from '../../types';
+import { PokemonTypes } from '../../types/index.js';
 
 export default {
 	pokemonStr: () => {

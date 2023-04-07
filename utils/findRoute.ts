@@ -1,4 +1,4 @@
-import routes from '../routes/routes';
+import routes from '../routes/routes.js';
 
 // function om de juiste route te vinden bij de url
 const findRoute = async (reqUrl: string) => {

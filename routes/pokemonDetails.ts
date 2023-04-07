@@ -1,6 +1,6 @@
 import express, { Request } from 'express';
-import { getFullPokemonDetails } from '../utils/dataFetch';
-import { Pokemon, Species } from '../types';
+import { getFullPokemonDetails } from '../utils/dataFetch.js';
+import { Pokemon, Species } from '../types/index.js';
 
 const router = express.Router({ mergeParams: true });
 

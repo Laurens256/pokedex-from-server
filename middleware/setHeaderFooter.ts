@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { generateHeaderFooter } from '../utils/footerHeader';
-import { findRoute } from '../utils/findRoute';
+import { generateHeaderFooter } from '../utils/footerHeader.js';
+import { findRoute } from '../utils/findRoute.js';
 
 const setHeaderFooter = async (req: Request, res: Response, next: NextFunction) => {
 	// haal viewname op

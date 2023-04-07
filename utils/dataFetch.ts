@@ -1,4 +1,4 @@
-import { Pokemon, Species } from '../types';
+import { Pokemon, Species } from '../types/index.js';
 
 let pokemonArr: Pokemon[] | Promise<Pokemon[]>;
 

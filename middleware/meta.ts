@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { findRoute } from '../utils/findRoute';
+import { findRoute } from '../utils/findRoute.js';
 
 const setMeta = async (req: Request, res: Response, next: NextFunction) => {
 	const view = await findRoute(req.url.split('?')[0]);
