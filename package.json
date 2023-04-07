@@ -5,7 +5,7 @@
 	"main": "index.ts",
 	"scripts": {
 		"prestart": "npm run build",
-		"start": "node index.ts",
+		"start": "ts-node --esm index.ts",
 		"predev": "npm run build",
 		"dev": "nodemon --esm index.ts & npm run watch",
 		"prebuild": "rimraf ./public",
