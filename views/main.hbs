@@ -11,7 +11,10 @@
 		<link rel='stylesheet' href='/index.css' />
 
 		<script>var exports = {};</script>
-		<script src='/index.js' type="module"></script>
+		<script src='/main.js' type="module"></script>
+				{{#each js}}
+			<script src='/{{this}}.js' type="module"></script>
+		{{/each}}
 
 		{{!-- <link rel="manifest" href="../manifest.json"> --}}
 		<meta name="currentView" content="{{meta.viewName}}">

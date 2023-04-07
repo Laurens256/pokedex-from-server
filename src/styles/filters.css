@@ -28,13 +28,13 @@
 .filters ul li h2 {
 	color: var(--text-orange);
 	text-shadow: var(--text-shadow-orange);
-	font-size: clamp(0px, 3em, 5vw);
+	font-size: clamp(16px, 3em, 5vw);
 }
 
 .filters ul li a {
 	color: var(--text-black);
 	text-shadow: var(--text-shadow-black);
-	font-size: clamp(0px, 2.5em, 4.5vw);
+	font-size: clamp(16px, 2.5em, 4.5vw);
 	height: 100%;
 }
 

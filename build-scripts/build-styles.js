@@ -5,7 +5,7 @@ import autoPrefixer from 'gulp-autoprefixer';
 
 (() => {
 return gulp.src([
-    './src/styles/*.css',
+    './src/styles/**/*.css',
   ])
     .pipe(concat(`index.css`))
     .pipe(cleanCSS())

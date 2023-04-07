@@ -1,4 +1,4 @@
-import { initList } from './generalList';
+import { initList } from './generalList.js';
 
 const saveQueryString = () => {
 	const queryString = window.location.search;

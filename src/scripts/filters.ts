@@ -1,4 +1,4 @@
-import { initList } from './generalList';
+import { initList } from './generalList.js';
 
 const links: NodeListOf<HTMLAnchorElement> = document.querySelectorAll(
 	'.filters li a[data-img]'
