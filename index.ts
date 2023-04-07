@@ -10,6 +10,7 @@ import pokemonHelpers from './utils/handlebars/pokemonHelpers.js';
 // middlewares
 import { setHeaderFooter } from './middleware/setHeaderFooter.js';
 import { setMeta } from './middleware/meta.js';
+import { setCacheHeaders } from './middleware/cache.js';
 
 import routes from './routes/routes.js';
 
@@ -39,6 +40,7 @@ app.set('views', './views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // middleware
+app.use(setCacheHeaders);
 app.use(compression());
 app.use(setHeaderFooter);
 app.use(setMeta);
