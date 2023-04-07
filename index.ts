@@ -14,6 +14,9 @@ import { setCacheHeaders } from './middleware/cache.js';
 
 import routes from './routes/routes.js';
 
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -50,7 +53,7 @@ routes.forEach((route) => {
 	app.use(route.path, route.view);
 });
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
 	console.log(`Server is running at http://localhost:${port}`);
 });
