@@ -5,11 +5,7 @@
 	"main": "server.js",
 	"scripts": {
 		"prestart": "npm run build",
-		"start1": "ts-node-esm server.ts",
-		"start0": "node --loader ts-node/esm server.ts",
-
-		"start": "node --loader ts-node/esm server.ts -r tsconfig-paths/register -r ts-node/register server.ts",
-
+		"start": "ts-node-esm server.ts",
 		"predev": "npm run build",
 		"dev": "nodemon --esm server.ts & npm run watch",
 		"prebuild": "rimraf ./public",
