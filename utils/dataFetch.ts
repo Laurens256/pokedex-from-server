@@ -8,9 +8,9 @@ const defaultRegion = 'kanto';
 // generieke function om data op te halen
 const getDataFromAPI = async (query: string) => {
 	const url = query.includes('//') ? query : baseApiUrl + query;
+
 	return await (await fetch(url)).json();
 };
-
 
 const hasLetters = new RegExp(/\D/);
 const getFullPokemonDetails = async (queries: string[]) => {
@@ -20,7 +20,9 @@ const getFullPokemonDetails = async (queries: string[]) => {
 
 		// if query contains letters, it's a name, so await species call to get id, name is not always accurate for pokemon
 		if (hasLetters.test(query)) {
-			const pokemon: Promise<Pokemon> = getDataFromAPI(`pokemon/${(await pokemonSpecies).id}`);
+			const pokemon: Promise<Pokemon> = getDataFromAPI(
+				`pokemon/${(await pokemonSpecies).id}`
+			);
 			return Promise.all([pokemonSpecies, pokemon]);
 		} else {
 			// if query contains only numbers, it's an id, so no need to await species call
@@ -67,9 +69,4 @@ const idArrFromUrlArr = (urlArr: string[]) => {
 	});
 };
 
-export {
-	getPokemonByRegion,
-	getFullPokemonDetails,
-	getUrlArr,
-	idArrFromUrlArr
-};
+export { getPokemonByRegion, getFullPokemonDetails, getUrlArr, idArrFromUrlArr };
