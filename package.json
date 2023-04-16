@@ -5,20 +5,20 @@
 	"main": "dist/server.js",
 	"scripts": {
 		"clear": "rimraf ./dist",
-		"prestart": "npm run clear && tsc && npm run _build",
+		"prestart": "npm run clear && tsc && npm run prep",
 		"start": "node dist/server.js",
-		"predev": "tsc -w & npm run _build",
+		"predev": "tsc -w & npm run prep",
 		"dev": "nodemon dist/server.js & npm run watch",
-		"_build": "npm-run-all _build:*",
-		"_build:css": "node dist/build-scripts/build-styles.js",
-		"_build:js": "node dist/build-scripts/build-scripts.js",
-		"_build:assets": "node dist/build-scripts/build-assets.js",
-		"_build:views": "node dist/build-scripts/build-views.js",
+		"prep": "npm-run-all prep:*",
+		"prep:css": "node dist/build-scripts/build-styles.js",
+		"prep:js": "node dist/build-scripts/build-scripts.js",
+		"prep:assets": "node dist/build-scripts/build-assets.js",
+		"prep:views": "node dist/build-scripts/build-views.js",
 		"watch": "run-p watch:*",
-		"watch:css": "chokidar 'src/styles/**/*.css' --command 'npm run _build:css'",
-		"watch:js": "chokidar 'src/scripts/**/*.*' --command 'npm run _build:js'",
-		"watch:assets": "chokidar 'src/assets/**/*' --command 'npm run _build:assets'",
-		"watch:views": "chokidar 'views/**/*.hbs' --command 'npm run _build:views'"
+		"watch:css": "chokidar 'src/styles/**/*.css' --command 'npm run prep:css'",
+		"watch:js": "chokidar 'src/scripts/**/*.*' --command 'npm run prep:js'",
+		"watch:assets": "chokidar 'src/assets/**/*' --command 'npm run prep:assets'",
+		"watch:views": "chokidar 'views/**/*.hbs' --command 'npm run prep:views'"
 	},
 	"nodemonConfig": {
 		"ext": "ts,js,hbs"
@@ -38,7 +38,6 @@
 		"@types/gulp-autoprefixer": "^0.0.33",
 		"@types/gulp-clean-css": "^4.3.0",
 		"@types/gulp-concat": "^0.0.33",
-		"@types/gulp-htmlmin": "^1.3.32",
 		"@types/gulp-uglify": "^3.0.7",
 		"@types/node": "^18.15.3",
 		"chokidar-cli": "^3.0.0",
@@ -46,13 +45,11 @@
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
-		"gulp-htmlmin": "^5.0.1",
 		"gulp-typescript": "^6.0.0-alpha.1",
 		"gulp-uglify": "^3.0.2",
 		"nodemon": "^2.0.21",
 		"npm-run-all": "^4.1.5",
 		"rimraf": "^4.4.1",
-		"ts-node": "^10.9.1",
 		"typescript": "^5.0.2"
 	},
 	"type": "module"
