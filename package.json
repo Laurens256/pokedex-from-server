@@ -5,22 +5,20 @@
 	"main": "dist/server.js",
 	"scripts": {
 		"clear": "rimraf ./dist",
-		"prestarttt": "npm run clear && npm run build",
-		"prestart": "npm run build",
+		"prestart": "npm run clear && tsc && npm run _build",
 		"start": "node dist/server.js",
-		"predev": "tsc -w & npm run build",
+		"predev": "tsc -w & npm run _build",
 		"dev": "nodemon dist/server.js & npm run watch",
-		"prebuild": "tsc",
-		"build": "npm-run-all build:*",
-		"build:css": "node dist/build-scripts/build-styles.js",
-		"build:js": "node dist/build-scripts/build-scripts.js",
-		"build:assets": "node dist/build-scripts/build-assets.js",
-		"build:views": "node dist/build-scripts/build-views.js",
+		"_build": "npm-run-all _build:*",
+		"_build:css": "node dist/build-scripts/build-styles.js",
+		"_build:js": "node dist/build-scripts/build-scripts.js",
+		"_build:assets": "node dist/build-scripts/build-assets.js",
+		"_build:views": "node dist/build-scripts/build-views.js",
 		"watch": "run-p watch:*",
-		"watch:css": "chokidar 'src/styles/**/*.css' --command 'npm run build:css'",
-		"watch:js": "chokidar 'src/scripts/**/*.*' --command 'npm run build:js'",
-		"watch:assets": "chokidar 'src/assets/**/*' --command 'npm run build:assets'",
-		"watch:views": "chokidar 'views/**/*.hbs' --command 'npm run build:views'"
+		"watch:css": "chokidar 'src/styles/**/*.css' --command 'npm run _build:css'",
+		"watch:js": "chokidar 'src/scripts/**/*.*' --command 'npm run _build:js'",
+		"watch:assets": "chokidar 'src/assets/**/*' --command 'npm run _build:assets'",
+		"watch:views": "chokidar 'views/**/*.hbs' --command 'npm run _build:views'"
 	},
 	"nodemonConfig": {
 		"ext": "ts,js,hbs"
