@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import concat from 'gulp-concat';
 import cleanCSS from 'gulp-clean-css';
 import autoPrefixer from 'gulp-autoprefixer';
+import { outDir } from './outDir.js';
 
 (() => {
 return gulp.src([
@@ -12,5 +13,5 @@ return gulp.src([
     .pipe(autoPrefixer({
       cascade: false
     }))
-    .pipe(gulp.dest('./public/'))
+    .pipe(gulp.dest(outDir))
 })();

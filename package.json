@@ -2,21 +2,23 @@
 	"name": "pokedex-from-server",
 	"version": "1.0.0",
 	"description": "![pwa](https://user-images.githubusercontent.com/3104648/28351989-7f68389e-6c4b-11e7-9bf2-e9fcd4977e7a.png)",
-	"main": "server.js",
+	"main": "dist/server.js",
 	"scripts": {
-		"prestart": "npm run build",
-		"start": "ts-node-esm server.ts",
-		"predev": "npm run build",
-		"dev": "nodemon --esm server.ts & npm run watch",
-		"prebuild": "rimraf ./public",
+		"clear": "rimraf ./dist",
+		"prestart": "npm run clear && tsc && npm run build",
+		"start": "node dist/server.js",
+		"predev": "tsc -w & npm run build",
+		"dev": "nodemon dist/server.js & npm run watch",
 		"build": "npm-run-all build:*",
-		"build:css": "ts-node-esm build-scripts/build-styles.ts",
-		"build:js": "ts-node-esm build-scripts/build-scripts.ts",
-		"build:assets": "ts-node-esm build-scripts/build-assets.ts",
+		"build:css": "node dist/build-scripts/build-styles.js",
+		"build:js": "node dist/build-scripts/build-scripts.js",
+		"build:assets": "node dist/build-scripts/build-assets.js",
+		"build:views": "node dist/build-scripts/build-views.js",
 		"watch": "run-p watch:*",
 		"watch:css": "chokidar 'src/styles/**/*.css' --command 'npm run build:css'",
 		"watch:js": "chokidar 'src/scripts/**/*.*' --command 'npm run build:js'",
-		"watch:assets": "chokidar 'src/assets/**/*' --command 'npm run build:assets'"
+		"watch:assets": "chokidar 'src/assets/**/*' --command 'npm run build:assets'",
+		"watch:views": "chokidar 'views/**/*.hbs' --command 'npm run build:views'"
 	},
 	"nodemonConfig": {
 		"ext": "ts,js,hbs"
@@ -30,13 +32,13 @@
 		"express-handlebars": "^7.0.2"
 	},
 	"devDependencies": {
-		"ts-node": "^10.9.1",
 		"@types/compression": "^1.7.2",
 		"@types/express": "^4.17.17",
 		"@types/gulp": "^4.0.10",
 		"@types/gulp-autoprefixer": "^0.0.33",
 		"@types/gulp-clean-css": "^4.3.0",
 		"@types/gulp-concat": "^0.0.33",
+		"@types/gulp-htmlmin": "^1.3.32",
 		"@types/gulp-uglify": "^3.0.7",
 		"@types/node": "^18.15.3",
 		"chokidar-cli": "^3.0.0",
@@ -44,11 +46,13 @@
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.1",
+		"gulp-htmlmin": "^5.0.1",
 		"gulp-typescript": "^6.0.0-alpha.1",
 		"gulp-uglify": "^3.0.2",
 		"nodemon": "^2.0.21",
 		"npm-run-all": "^4.1.5",
 		"rimraf": "^4.4.1",
+		"ts-node": "^10.9.1",
 		"typescript": "^5.0.2"
 	},
 	"type": "module"
