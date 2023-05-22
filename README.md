@@ -68,5 +68,5 @@ Verder ben ik deze week bezig geweest met het afronden van wat kleine details. Z
 
 ## Activity diagram
 <p align="center">
- <img src="./public/img/readme/activity-diagram.png" alt="activity diagram">
+ <img src="./src/assets/img/readme/activity-diagram.png" alt="activity diagram">
 </p>
