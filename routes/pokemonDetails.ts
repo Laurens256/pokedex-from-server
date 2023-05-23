@@ -10,7 +10,6 @@ export interface ReqWithParams extends Request {
 
 router.get('/', async (req: ReqWithParams, res) => {
 	const name = req.params.name;
-
 	const pokemonDatas = (await getFullPokemonDetails([name]))[0];
 
 	const pokemon = { ...pokemonDatas[0], ...pokemonDatas[1] };

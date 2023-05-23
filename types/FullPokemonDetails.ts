@@ -13,7 +13,6 @@ export interface FullPokemonDetails {
 		front_default: string;
 		front_shiny: string;
 	};
-
 	flavor_text_entries: {
 		flavor_text: string;
 		language: Url;

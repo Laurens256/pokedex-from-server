@@ -14,7 +14,6 @@ export interface Pokemon {
 	location_area_encounters: string;
 	name: string;
 	order: number;
-	past_types: null;
 	species: Url;
 	sprites: {
 		front_default: string;

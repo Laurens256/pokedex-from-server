@@ -1,8 +1,6 @@
 import { Url } from './index.js';
 
 export interface Species {
-	base_happiness: number;
-	capture_rate: number;
 	color: Url;
 	egg_groups: Url[];
 	evolution_chain: {
